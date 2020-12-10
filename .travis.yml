@@ -12,6 +12,7 @@ env:
 language: generic
 services: docker
 dist: xenial
+sudo: required
 addons:
      apt:
        sources:
