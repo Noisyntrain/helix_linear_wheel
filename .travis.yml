@@ -68,6 +68,15 @@ matrix:
 before_install:
 - source multibuild/common_utils.sh
 - source multibuild/travis_steps.sh
+# Link gcc-6 and g++-6 to their standard commands
+- ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
+- ln -s /usr/bin/g++-6 /usr/local/bin/g++
+# Export CC and CXX to tell cmake which compiler to use
+- export CC=/usr/bin/gcc-6
+- export CXX=/usr/bin/g++-6
+# Check versions of gcc, g++ and cmake
+- gcc -v && g++ -v && cmake --version
+# Run your build commands next
 - before_install
 install:
 #- echo $REPO_DIR $BUILD_COMMIT
@@ -82,15 +91,6 @@ install:
 # - cd ${TRAVIS_BUILD_DIR}
 - build_wheel $REPO_DIR $PLAT
 script:
-# Link gcc-6 and g++-6 to their standard commands
-- ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
-- ln -s /usr/bin/g++-6 /usr/local/bin/g++
-# Export CC and CXX to tell cmake which compiler to use
-- export CC=/usr/bin/gcc-6
-- export CXX=/usr/bin/g++-6
-# Check versions of gcc, g++ and cmake
-- gcc -v && g++ -v && cmake --version
-# Run your build commands next
 - install_run $PLAT
 after_success:
 - echo "success"
