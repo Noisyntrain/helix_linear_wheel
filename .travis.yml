@@ -10,8 +10,16 @@ env:
   #- secure: VyvntgpNNw3LvPVP2UkvBiR9H3++QevxC+hXZ2AXOVDwwvoYdMdxt9SHMQhKdJiKlz0D0InFzXzn4N/02s/QPh7ZzD2a5ybufNzkH5zlDnn4xjmS4A/h1Vr0Vfx2GktK6pzc953IlEEpc1D1aGtg7VTV3s1Qp0P5g4ee82VsGW3ntkSqdm4DOU4MQco5LKxkR1OAmq2mMR/TJaGUtqBiGmYPIzttqX1fB3Mc0owZsv3Xzxi4fcQQ9EjMDA0eFO9QN50zhLb4dxDT6gSLNr+YtTHnwYruzPd/dRwz7yHYadaJjqY69KaxrlmPhFn5RT2RNQw3dB6u6Yf9V8uIrV7xU/mWBQBNheov5XnXBq+Pwnt0UAoU/zMSbahTcIPEKFRWVCx1Ct1FZaPBWJQvlZSOA7RCTLbUZWBTLkyYDknTvHp2jZtsLkiJ1F14r0OKJVM1XKm2ahq9p4Ty2oLBHom4KK6M353X/WLR575r1jzKVI3tPNYhiqgxaPCTM1uU26MYmsYnkiCEV+M0JQBDT8daU3Oi9n1000+Rt/lj81oRRQAaIT9i1LHVPOZU4pF7++PNBaYfkCoXRDGZpRVoY8ay9hoWKO1qDLSfXM1fOm+Xm1/UCzCZp1pE+Vc/vUChRnOM1dPJsxhBviWA5TKxJHfNaaNDF519p2eAZOZNahxHpgo=
 language: generic
 services: docker
-dist: xenial
+dist: trusty
 sudo: required
+addons:
+     apt:
+       sources:
+         - ubuntu-toolchain-r-test
+       packages:
+         - gcc-6
+         - g++-6
+         - cmake
 matrix:
   exclude:
   - python: 3.5
@@ -60,14 +68,14 @@ matrix:
 before_install:
 - source multibuild/common_utils.sh
 - source multibuild/travis_steps.sh
-# Link gcc-6 and g++-6 to their standard commands
-# - sudo ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
-# - sudo ln -s /usr/bin/g++-6 /usr/local/bin/g++
-# # Export CC and CXX to tell cmake which compiler to use
-# - export CC=/usr/bin/gcc-6
-# - export CXX=/usr/bin/g++-6
-# # Check versions of gcc, g++ and cmake
-# - gcc -v && g++ -v && cmake --version
+# #Link gcc-6 and g++-6 to their standard commands
+- sudo ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
+- sudo ln -s /usr/bin/g++-6 /usr/local/bin/g++
+# Export CC and CXX to tell cmake which compiler to use
+- export CC=/usr/bin/gcc-6
+- export CXX=/usr/bin/g++-6
+# Check versions of gcc, g++ and cmake
+- gcc -v && g++ -v && cmake --version
 # # Run your build commands next
 - before_install
 install:
@@ -81,16 +89,6 @@ install:
 # - mv cmake-3.3.2-Linux-x86_64 cmake-install
 # - PATH=${DEPS_DIR}/cmake-install:${DEPS_DIR}/cmake-install/bin:$PATH
 # - cd ${TRAVIS_BUILD_DIR}
-- DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
-- mkdir -p ${DEPS_DIR} && cd ${DEPS_DIR}
-
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-    CMAKE_URL="https://cmake.org/files/v3.7/cmake-3.7.2-Linux-x86_64.tar.gz";
-    mkdir cmake && travis_retry wget --no-check-certificate --quiet -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C cmake;
-    export PATH=${DEPS_DIR}/cmake/bin:${PATH};
-  else
-    brew outdated cmake || brew upgrade cmake;
-  fi
 - cmake --version
 - build_wheel $REPO_DIR $PLAT
 script:
