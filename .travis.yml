@@ -12,6 +12,14 @@ env:
 language: generic
 services: docker
 dist: xenial
+addons:
+     apt:
+       sources:
+         - ubuntu-toolchain-r-test
+       packages:
+         - gcc-6
+         - g++-6
+         - cmake
 matrix:
   exclude:
   - python: 3.5
@@ -64,16 +72,25 @@ before_install:
 install:
 #- echo $REPO_DIR $BUILD_COMMIT
 #- clean_code $REPO_DIR $BUILD_COMMIT
-- DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
-- mkdir ${DEPS_DIR} && cd ${DEPS_DIR}
-- travis_retry wget --no-check-certificate https://cmake.org/files/v3.3/cmake-3.3.2-Linux-x86_64.tar.gz
-- echo "f3546812c11ce7f5d64dc132a566b749 *cmake-3.3.2-Linux-x86_64.tar.gz" > cmake_md5.txt
-- tar -xvf cmake-3.3.2-Linux-x86_64.tar.gz > /dev/null
-- mv cmake-3.3.2-Linux-x86_64 cmake-install
-- PATH=${DEPS_DIR}/cmake-install:${DEPS_DIR}/cmake-install/bin:$PATH
-- cd ${TRAVIS_BUILD_DIR}
+# - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
+# - mkdir ${DEPS_DIR} && cd ${DEPS_DIR}
+# - travis_retry wget --no-check-certificate https://cmake.org/files/v3.3/cmake-3.3.2-Linux-x86_64.tar.gz
+# - echo "f3546812c11ce7f5d64dc132a566b749 *cmake-3.3.2-Linux-x86_64.tar.gz" > cmake_md5.txt
+# - tar -xvf cmake-3.3.2-Linux-x86_64.tar.gz > /dev/null
+# - mv cmake-3.3.2-Linux-x86_64 cmake-install
+# - PATH=${DEPS_DIR}/cmake-install:${DEPS_DIR}/cmake-install/bin:$PATH
+# - cd ${TRAVIS_BUILD_DIR}
 - build_wheel $REPO_DIR $PLAT
 script:
+# Link gcc-6 and g++-6 to their standard commands
+- ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
+- ln -s /usr/bin/g++-6 /usr/local/bin/g++
+# Export CC and CXX to tell cmake which compiler to use
+- export CC=/usr/bin/gcc-6
+- export CXX=/usr/bin/g++-6
+# Check versions of gcc, g++ and cmake
+- gcc -v && g++ -v && cmake --version
+# Run your build commands next
 - install_run $PLAT
 after_success:
 - echo "success"
