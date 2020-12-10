@@ -3,7 +3,7 @@
 
 environment:
   global:
-    REPO_DIR: pahelix_pkg 
+    REPO_DIR: pahelix_linear 
     PACKAGE_NAME: pahelix
     BUILD_COMMIT: main
     NP_BUILD_DEP: "Cython numpy opencv-python==4.2.0.32"
@@ -61,7 +61,8 @@ artifacts:
     - path: "%REPO_DIR%\\dist\\*"
 
 on_success:
-  - python -m pip install twine
+  - echo "success"
+  # - python -m pip install twine
  # - "python -m twine upload %REPO_DIR%\\dist\\* --skip-existing -p %TWINE_PASSWD% -u %TWINE_USERNAME% --repository-url https://test.pypi.org/legacy/"
   #- "python -m twine upload %REPO_DIR%\\dist\\* --skip-existing -p %TWINE_PASSWD% -u %TWINE_USERNAME% "
 
