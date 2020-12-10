@@ -9,10 +9,10 @@ environment:
     NP_BUILD_DEP: "Cython numpy opencv-python==4.2.0.32"
     NP_TEST_DEP: "numpy Cython paddlepaddle networkx"
     WHEELHOUSE_UPLOADER_USERNAME: travis-worker
-    TWINE_USERNAME: yelrose
-    TWINE_PASSWD:
-        secure:
-            wmtGDxtbr+07s1EeBfea7w==
+    #TWINE_USERNAME: yelrose
+    #TWINE_PASSWD:
+    #    secure:
+    #        wmtGDxtbr+07s1EeBfea7w==
 
   matrix:
     - PYTHON: C:\Python36
@@ -62,6 +62,6 @@ artifacts:
 
 on_success:
   - python -m pip install twine
-  - "python -m twine upload %REPO_DIR%\\dist\\* --skip-existing -p %TWINE_PASSWD% -u %TWINE_USERNAME% --repository-url https://test.pypi.org/legacy/"
+ # - "python -m twine upload %REPO_DIR%\\dist\\* --skip-existing -p %TWINE_PASSWD% -u %TWINE_USERNAME% --repository-url https://test.pypi.org/legacy/"
   #- "python -m twine upload %REPO_DIR%\\dist\\* --skip-existing -p %TWINE_PASSWD% -u %TWINE_USERNAME% "
 

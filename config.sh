@@ -9,16 +9,18 @@ function pre_build {
 
 function run_tests {
     # Runs tests on installed distribution from an empty directory
-    python --version
-#    echo 'import sys
-#try:
-#    import pgl
-#    print("Import Success")
-#    sys.exit(0)
-#except Exception as e:
-#    print("Import Failed")
-#    print(e)
-#    sys.exit(1)' > test_import.py
-#    python test_import.py
+    echo 'import sys
+try:
+    import pgl
+    import pahelix
+    import linear_x
+    print("Import Success")
+    x = linear_x.LinearX()
+    sys.exit(0)
+except Exception as e:
+    print("Import Failed")
+    print(e)
+    sys.exit(1)' > test_import.py
+    python test_import.py
 }
 
