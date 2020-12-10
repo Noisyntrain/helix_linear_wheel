@@ -568,7 +568,8 @@ DecoderResult<double> LinearFoldBeamCKYParserV::parse(string& seq, vector<int>& 
 
     LinearFoldState<int>& viterbi = bestC[seq_length-1];
 
-    char result[seq_length+1];
+    // char result[seq_length+1];
+    char *result = new char[seq_length+1];
     if (!get_parentheses(result, seq)) {
         return {"", 0};
     }
