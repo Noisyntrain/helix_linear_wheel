@@ -9,7 +9,7 @@ environment:
     NP_BUILD_DEP: "Cython numpy opencv-python==4.2.0.32"
     NP_TEST_DEP: "numpy Cython paddlepaddle networkx"
     WHEELHOUSE_UPLOADER_USERNAME: travis-worker
-    TWINE_USERNAME: pahelix_rick_he
+    TWINE_USERNAME: rickhe
     TWINE_PASSWD:
        secure:
           7QejzJrROylpAiHl8VYpag==
