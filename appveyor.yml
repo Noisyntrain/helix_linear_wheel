@@ -12,7 +12,7 @@ environment:
     TWINE_USERNAME: pahelix_rick_he
     TWINE_PASSWD:
        secure:
-           EjHBskfjp3is/CvO4ctdWm3U6nasAaltly4U9XJ6OAN2vpxY61634lJ+IlZ1+ayrJAVZ+ly2Q6gU1QUoqNAo0C5llVgu+YxT+dGgu7ZIDX0701SoBcM9tUfA9b4/nxIfpCqDMYIxUKpILIHUmeqUsoVxztVGs3zfNCvu0PF5pCrapbyEXf57f2uKdBQPgugiFwJvw1bwDk6ZnIVBNTDs9UyC/wqH5NHekTUN+1BuibuxRey4BUNdvtIg5WmcBTXoe07vcg5b7cDIdVxfac/6eDdijKYP9ux6p4wUqSLtff4=
+          7QejzJrROylpAiHl8VYpag==
 
   matrix:
     - PYTHON: C:\Python36
