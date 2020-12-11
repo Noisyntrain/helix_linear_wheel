@@ -9,10 +9,10 @@ environment:
     NP_BUILD_DEP: "Cython numpy opencv-python==4.2.0.32"
     NP_TEST_DEP: "numpy Cython paddlepaddle networkx"
     WHEELHOUSE_UPLOADER_USERNAME: travis-worker
-    #TWINE_USERNAME: yelrose
-    #TWINE_PASSWD:
-    #    secure:
-    #        wmtGDxtbr+07s1EeBfea7w==
+    TWINE_USERNAME: pahelix_rick_he
+    TWINE_PASSWD:
+       secure:
+           EjHBskfjp3is/CvO4ctdWm3U6nasAaltly4U9XJ6OAN2vpxY61634lJ+IlZ1+ayrJAVZ+ly2Q6gU1QUoqNAo0C5llVgu+YxT+dGgu7ZIDX0701SoBcM9tUfA9b4/nxIfpCqDMYIxUKpILIHUmeqUsoVxztVGs3zfNCvu0PF5pCrapbyEXf57f2uKdBQPgugiFwJvw1bwDk6ZnIVBNTDs9UyC/wqH5NHekTUN+1BuibuxRey4BUNdvtIg5WmcBTXoe07vcg5b7cDIdVxfac/6eDdijKYP9ux6p4wUqSLtff4=
 
   matrix:
     - PYTHON: C:\Python36
@@ -62,7 +62,7 @@ artifacts:
 
 on_success:
   - echo "success"
-  # - python -m pip install twine
- # - "python -m twine upload %REPO_DIR%\\dist\\* --skip-existing -p %TWINE_PASSWD% -u %TWINE_USERNAME% --repository-url https://test.pypi.org/legacy/"
-  #- "python -m twine upload %REPO_DIR%\\dist\\* --skip-existing -p %TWINE_PASSWD% -u %TWINE_USERNAME% "
+  - python -m pip install twine
+  - "python -m twine upload %REPO_DIR%\\dist\\* --skip-existing -p %TWINE_PASSWD% -u %TWINE_USERNAME% --repository-url https://test.pypi.org/legacy/"
+  - "python -m twine upload %REPO_DIR%\\dist\\* --skip-existing -p %TWINE_PASSWD% -u %TWINE_USERNAME% "
 
