@@ -124,7 +124,7 @@ setup(
     version="1.0.0b1",
     author="baidu-nlp-bio",
     author_email="nlp-bio@baidu.com",
-    description="Launch",
+    description="PaddleHelix is a machine-learning-based bio-computing framework",
     long_description="",
     packages = find_packages(),
     ext_modules=[CMakeExtension("linear_rna")],
