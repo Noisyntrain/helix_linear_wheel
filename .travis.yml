@@ -7,8 +7,8 @@ env:
   - PLAT=x86_64
   - UNICODE_WIDTH=32
   - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
-  #- TWINE_USERNAME=yelrose
-  #- secure: VyvntgpNNw3LvPVP2UkvBiR9H3++QevxC+hXZ2AXOVDwwvoYdMdxt9SHMQhKdJiKlz0D0InFzXzn4N/02s/QPh7ZzD2a5ybufNzkH5zlDnn4xjmS4A/h1Vr0Vfx2GktK6pzc953IlEEpc1D1aGtg7VTV3s1Qp0P5g4ee82VsGW3ntkSqdm4DOU4MQco5LKxkR1OAmq2mMR/TJaGUtqBiGmYPIzttqX1fB3Mc0owZsv3Xzxi4fcQQ9EjMDA0eFO9QN50zhLb4dxDT6gSLNr+YtTHnwYruzPd/dRwz7yHYadaJjqY69KaxrlmPhFn5RT2RNQw3dB6u6Yf9V8uIrV7xU/mWBQBNheov5XnXBq+Pwnt0UAoU/zMSbahTcIPEKFRWVCx1Ct1FZaPBWJQvlZSOA7RCTLbUZWBTLkyYDknTvHp2jZtsLkiJ1F14r0OKJVM1XKm2ahq9p4Ty2oLBHom4KK6M353X/WLR575r1jzKVI3tPNYhiqgxaPCTM1uU26MYmsYnkiCEV+M0JQBDT8daU3Oi9n1000+Rt/lj81oRRQAaIT9i1LHVPOZU4pF7++PNBaYfkCoXRDGZpRVoY8ay9hoWKO1qDLSfXM1fOm+Xm1/UCzCZp1pE+Vc/vUChRnOM1dPJsxhBviWA5TKxJHfNaaNDF519p2eAZOZNahxHpgo=
+  - TWINE_USERNAME=rickhe
+  - secure: RWS4SIcvhUcWR5yVxPz844izP2z8D8InYXExR1bYmX3k5GM5vAc7G/Bb3JMk8G64NIstLq7DP65mvagCEhP7th7/51VnWwzlmytZct4of6gl1xArzNAfvaot8glT070brJwDgWmINDexR3RFhzGPdj7Rh9WwDgF2tgoQN45MwlFkRw5VUrwe/cE1p0hrsHRj5IneC7Dgx04L7o6lPnnqBRMOh/9UjOcKGbZh2QrC+GlKDt9DWJTMbjlIfLT/MdTV9PD3tQtyZSBAl519V/mTHqDkd19S3RqRkfZKzrpesjc05hBljCnjr0lZH+Hp5SCj5In0LJDGrvFFU7dv88RLjriYeconmXWVyHaf7ibj/inQBuj05uNPTEVkU3poj/hx5Ekp3EEzg2cR0NMvued2ccMr+g4cQ+5T/zdburJymooKPvRtgEiOE5kWJTiYN6TWEcvr2rpS24Nr0E/u1Uz9eZ2bcRpACYScr/ARgz/64QxWVHAzl6J9H+3ZtiIHRD/j1rnwy++U83SEzPMWeOOiAJH3R479yP7EBF5VzP9Idkkhkloz+x2wT4hrr/JsrRFYVCD4gyUM2wVsdGkZvJLA6uRcwqTmBRoH24rD2OfLfR7YZg3tO7vlnM1fARRs1ljzF9L57zxh7kc2Kmbrd8a8OuAZXkcxywVC44UwztaFoaI=
 language: generic
 services: docker
 dist:  xenial 
@@ -97,9 +97,9 @@ script:
 - install_run $PLAT
 after_success:
 - echo "success"
-#- pip install twine
-#- twine upload ${TRAVIS_BUILD_DIR}/wheelhouse/* --skip-existing -p $TWINE_PASSWD -u
-#  $TWINE_USERNAME --repository-url https://test.pypi.org/legacy/
+- pip install twine
+- twine upload ${TRAVIS_BUILD_DIR}/wheelhouse/* --skip-existing -p $TWINE_PASSWD -u
+ $TWINE_USERNAME --repository-url https://test.pypi.org/legacy/
 
 #- twine upload ${TRAVIS_BUILD_DIR}/wheelhouse/* --skip-existing -p $TWINE_PASSWD -u
 #  $TWINE_USERNAME 

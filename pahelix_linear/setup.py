@@ -123,10 +123,10 @@ requires = [
 
 setup(
     name="full_pahelix",
-    version="0.1.0",
-    author="fangxiaomin",
-    author_email="fangxiaomin01@baidu.com",
-    description="checking for mac package",
+    version="0.1.1",
+    author="baidu-nlp-bio",
+    author_email="nlp-bio@baidu.com",
+    description="try to update to test pypi",
     long_description="",
     packages = find_packages(),
     ext_modules=[CMakeExtension("cmake_example")],
