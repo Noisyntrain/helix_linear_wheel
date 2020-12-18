@@ -123,10 +123,10 @@ requires = [
 
 setup(
     name="full_pahelix",
-    version="0.0.2",
+    version="0.1.0",
     author="fangxiaomin",
     author_email="fangxiaomin01@baidu.com",
-    description="adding install requires",
+    description="checking for mac package",
     long_description="",
     packages = find_packages(),
     ext_modules=[CMakeExtension("cmake_example")],
