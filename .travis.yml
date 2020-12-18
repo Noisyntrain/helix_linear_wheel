@@ -91,6 +91,7 @@ install:
 # - PATH=${DEPS_DIR}/cmake-install:${DEPS_DIR}/cmake-install/bin:$PATH
 # - cd ${TRAVIS_BUILD_DIR}
 - cmake --version
+- brew install ninja
 - build_wheel $REPO_DIR $PLAT
 script:
 - install_run $PLAT
