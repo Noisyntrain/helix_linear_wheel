@@ -1,6 +1,6 @@
 env:
   global:
-  - REPO_DIR=pahelix_linear
+  - REPO_DIR=PaddleHelix
   - BUILD_COMMIT=main
   - BUILD_DEPENDS="cmake"
   # - TEST_DEPENDS="numpy Cython opencv-python==4.2.0.32 paddlepaddle==1.7.2 networkx rarfile==3.0"
